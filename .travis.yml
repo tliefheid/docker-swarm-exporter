@@ -1,4 +1,10 @@
 language: go
-sudo: false
+
+dist: xenial
+os: linux
+
 go:
-  - "1.11"
+  - "1.15"
+
+script:
+  - ./.travis.gofmt.sh
