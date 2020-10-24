@@ -19,21 +19,28 @@ const (
 
 	info = "info"
 
-	cpuLimit       = "_cpu_limit"
-	cpuReservation = "_cpu_reservation"
-	memLimit       = "_memory_limit"
-	memReservation = "_memory_reservation"
+	cpuLimit       = "cpu_limit"
+	cpuReservation = "cpu_reservation"
+	memLimit       = "memory_limit"
+	memReservation = "memory_reservation"
 
-	resourcesCPU = "_resources_cpu"
-	resourcesMem = "_resources_memory"
+	resourcesCPU = "resources_cpu"
+	resourcesMem = "resources_memory"
+
+	timeCreated = "time_created"
+	timeUpdated = "time_updated"
+	replicas    = "replicas"
 )
 
 const (
-	SwarmNodeInfo = prefixMetric + prefixSwarmNode + info
+	swarmNodeInfo = prefixMetric + prefixSwarmNode + info
 
-	ServiceSpecInfo           = prefixMetric + prefixServiceSpec + info
-	ServiceSpecMemLimit       = prefixMetric + prefixServiceSpec + memLimit
-	ServiceSpecCPULimit       = prefixMetric + prefixServiceSpec + cpuLimit
-	ServiceSpecMemReservation = prefixMetric + prefixServiceSpec + memReservation
-	ServiceSpecCPUReservation = prefixMetric + prefixServiceSpec + cpuReservation
+	serviceSpecInfo           = prefixMetric + prefixServiceSpec + info
+	serviceSpecMemLimit       = prefixMetric + prefixServiceSpec + memLimit
+	serviceSpecCPULimit       = prefixMetric + prefixServiceSpec + cpuLimit
+	serviceSpecMemReservation = prefixMetric + prefixServiceSpec + memReservation
+	serviceSpecCPUReservation = prefixMetric + prefixServiceSpec + cpuReservation
+	serviceSpecTimeCreated    = prefixMetric + prefixServiceSpec + timeCreated
+	serviceSpecTimeUpdated    = prefixMetric + prefixServiceSpec + timeUpdated
+	serviceSpecReplicas       = prefixMetric + prefixServiceSpec + replicas
 )

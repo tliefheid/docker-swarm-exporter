@@ -41,7 +41,7 @@ func UpdateServiceMetrics() {
 			serviceMode = common.ServiceModeReplicated
 			replicas = float64(*s.Spec.Mode.Replicated.Replicas)
 		}
-		var sm = metrics.ServiceMetricsStruct{
+		var sm = metrics.ServiceMetrics{
 			Name:           s.Spec.Annotations.Name,
 			ServiceMode:    serviceMode,
 			Container:      s.Spec.TaskTemplate.ContainerSpec.Image,
@@ -64,6 +64,6 @@ func UpdateServiceMetrics() {
 	common.ExportServiceMetrics(serviceArr)
 }
 
-func printSlice(s []metrics.ServiceMetricsStruct) {
+func printSlice(s []metrics.ServiceMetrics) {
 	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
 }
