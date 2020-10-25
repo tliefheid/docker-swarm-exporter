@@ -34,6 +34,9 @@ const (
 	info = "info"
 
 	containers = "container_state"
+	images     = "images"
+	cpu        = "cpu"
+	mem        = "memory"
 
 	cpuLimit       = "cpu_limit"
 	cpuReservation = "cpu_reservation"
@@ -51,6 +54,9 @@ const (
 const (
 	swarmInfo              = prefixMetric + prefixSwarmCluster + info
 	swarmClusterContainers = prefixMetric + prefixSwarmCluster + containers
+	swarmClusterImages     = prefixMetric + prefixSwarmCluster + images
+	swarmClusterCPU        = prefixMetric + prefixSwarmCluster + cpu
+	swarmClusterMemory     = prefixMetric + prefixSwarmCluster + mem
 
 	swarmNodeInfo           = prefixMetric + prefixSwarmNode + info
 	swarmNodeResourceCPU    = prefixMetric + prefixSwarmNode + resourcesCPU

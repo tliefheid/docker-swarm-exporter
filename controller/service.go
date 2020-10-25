@@ -1,11 +1,8 @@
 package controller
 
 import (
-	"context"
 	"fmt"
 
-	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/client"
 	"github.com/toml-dev/docker-swarm-exporter/common"
 	"github.com/toml-dev/docker-swarm-exporter/model"
 )
@@ -13,17 +10,9 @@ import (
 // UpdateServiceMetrics gathers service metrics and expose them to prometheus
 func UpdateServiceMetrics() {
 	fmt.Println("Update Service Metrics")
-	// get cli √
-	// collect metrics √
-	// fill struct √
-	// send struct to export √
-	// services := common.GetServiceList
-	// clien
-	cli, err := client.NewEnvClient()
-	services, err := cli.ServiceList(context.Background(), types.ServiceListOptions{})
-	if err != nil {
-		panic(err)
-	}
+
+	services := common.GetServiceList()
+
 	var serviceArr []model.ServiceMetrics
 	_serviceCount := len(services)
 	fmt.Printf("found '%d' services\n", _serviceCount)

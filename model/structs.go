@@ -63,8 +63,11 @@ func (nm NodeMetrics) IsLeader() string {
 }
 
 type SwarmMetrics struct {
+	ID        string
 	Container ContainerMetrics
-	Resources resources
+	NCPU      int
+	Memory    int64
+	Images    int
 }
 type ContainerMetrics struct {
 	Running int

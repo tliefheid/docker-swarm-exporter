@@ -21,6 +21,10 @@ var (
 	nodeResourcesMem = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: swarmNodeResourceMemory}, []string{lblNodeID})
 )
 var (
-	swarmClusterInfo = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: swarmInfo}, []string{lblID})
-	swarmContainers  = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: swarmClusterContainers}, []string{lblState})
+	swarmClusterInfo       = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: swarmInfo}, []string{lblID})
+	swarmClusterInfoCPU    = promauto.NewGauge(prometheus.GaugeOpts{Name: swarmClusterCPU})
+	swarmClusterInfoMem    = promauto.NewGauge(prometheus.GaugeOpts{Name: swarmClusterMemory})
+	swarmClusterInfoImages = promauto.NewGauge(prometheus.GaugeOpts{Name: swarmClusterImages})
+
+	swarmClusterInfoContainers = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: swarmClusterContainers}, []string{lblState})
 )

@@ -4,6 +4,17 @@ import (
 	"github.com/toml-dev/docker-swarm-exporter/model"
 )
 
+// ExportSwarmClusterInfo set gauges regarding swarm cluster information
+func ExportSwarmClusterInfo(m model.SwarmMetrics) {
+	swarmClusterInfo.WithLabelValues(m.ID).Set(1)
+	swarmClusterInfoCPU.Set(float64(m.NCPU))
+	swarmClusterInfoMem.Set(float64(m.Memory))
+	swarmClusterInfoImages.Set(float64(m.Images))
+	swarmClusterInfoContainers.WithLabelValues("running").Set(float64(m.Container.Running))
+	swarmClusterInfoContainers.WithLabelValues("paused").Set(float64(m.Container.Paused))
+	swarmClusterInfoContainers.WithLabelValues("stopped").Set(float64(m.Container.Stopped))
+}
+
 // ExportServiceMetrics set correct gauges and counters for service metrics
 func ExportServiceMetrics(metrics []model.ServiceMetrics) {
 	for _, m := range metrics {
@@ -15,7 +26,7 @@ func ExportServiceMetrics(metrics []model.ServiceMetrics) {
 		serviceTimeCreated.WithLabelValues(m.Name).Set(float64(m.TimeCreated))
 		serviceTimeUpdate.WithLabelValues(m.Name).Set(float64(m.TimeUpdated))
 		if m.Replicas != -1 {
-			// set counter
+			// set gauge
 		}
 	}
 }

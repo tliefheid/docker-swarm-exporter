@@ -11,8 +11,7 @@ import (
 func UpdateSwarmMetrics() {
 	fmt.Println("Update Swarm Info Metrics")
 	info := common.GetSwarmInfo()
-
-	var cm = model.ContainerMetrics{}
+	fmt.Printf("INFO\n%#v\n", info)
 
 	var sm = model.SwarmMetrics{
 		// Container: cm,
@@ -21,7 +20,9 @@ func UpdateSwarmMetrics() {
 			Paused:  info.ContainersPaused,
 			Stopped: info.ContainersStopped,
 		},
+		NCPU:   info.NCPU,
+		Memory: info.MemTotal,
+		Images: info.Images,
 	}
-	sm.Container.Paused = info.ContainersPaused
-	// sm.Container
+	common.ExportSwarmClusterInfo(sm)
 }
