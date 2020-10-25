@@ -4,6 +4,16 @@ const (
 	lblServiceName = "service_name"
 	lblContainer   = "container_image"
 	lblDeployMode  = "deploy_mode"
+
+	lblNodeID           = "node_id"
+	lblHost             = "hostname"
+	lblRole             = "role"
+	lblOS               = "os"
+	lblArch             = "architecture"
+	lblEngVersion       = "engine_version"
+	lblNodeState        = "node_state"
+	lblManagerReachable = "manager_reachable"
+	lblLeader           = "leader"
 )
 
 const (
@@ -33,7 +43,9 @@ const (
 )
 
 const (
-	swarmNodeInfo = prefixMetric + prefixSwarmNode + info
+	swarmNodeInfo           = prefixMetric + prefixSwarmNode + info
+	swarmNodeResourceCPU    = prefixMetric + prefixSwarmNode + resourcesCPU
+	swarmNodeResourceMemory = prefixMetric + prefixSwarmNode + resourcesMem
 
 	serviceSpecInfo           = prefixMetric + prefixServiceSpec + info
 	serviceSpecMemLimit       = prefixMetric + prefixServiceSpec + memLimit

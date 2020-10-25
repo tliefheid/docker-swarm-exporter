@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/toml-dev/docker-swarm-exporter/service"
+	"github.com/toml-dev/docker-swarm-exporter/controller"
 )
 
 // var cli *client.Client
@@ -133,7 +133,7 @@ func collectDockerExtra() {
 	// fmt.Printf("\nSWARM\n%#v\n\n", swarm)
 }
 func collectDockerServices() {
-	service.UpdateServiceMetrics()
+	controller.UpdateServiceMetrics()
 	// cli, err := client.NewEnvClient()
 	// if err != nil {
 	// 	panic(err)

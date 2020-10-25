@@ -15,3 +15,8 @@ var (
 	serviceTimeUpdate     = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: serviceSpecTimeUpdated}, []string{lblServiceName})
 	serviceTimeCreated    = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: serviceSpecTimeCreated}, []string{lblServiceName})
 )
+var (
+	nodeInfo         = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: swarmNodeInfo}, []string{lblNodeID, lblHost, lblRole, lblOS, lblArch, lblEngVersion, lblNodeState, lblManagerReachable, lblLeader})
+	nodeResourcesCPU = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: swarmNodeResourceCPU}, []string{lblNodeID})
+	nodeResourcesMem = promauto.NewGaugeVec(prometheus.GaugeOpts{Name: swarmNodeResourceMemory}, []string{lblNodeID})
+)
