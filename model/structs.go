@@ -1,6 +1,10 @@
 package model
 
-import "strconv"
+import (
+	"strconv"
+
+	"github.com/docker/docker/api/types/swarm"
+)
 
 type resources struct {
 	NanoCPUs    int64
@@ -27,7 +31,7 @@ type ServiceMetrics struct {
 type NodeMetrics struct {
 	ID            string
 	Host          string
-	Role          string
+	Role          swarm.NodeRole
 	Os            string
 	Architecture  string
 	Availability  string
@@ -38,16 +42,16 @@ type NodeMetrics struct {
 }
 
 type managerInfo struct {
-	Reachable string
-	Leader    bool
+	Reachability string
+	Leader       bool
 }
 
 // ManagerReachability get the manager reachability if ManagerInfo != nil
 func (nm NodeMetrics) ManagerReachability() string {
 	if nm.ManagerInfo == (managerInfo{}) {
-		return "unknown"
+		return string(swarm.ReachabilityUnknown)
 	}
-	return nm.ManagerInfo.Reachable
+	return string(nm.ManagerInfo.Reachability)
 }
 
 // IsLeader get the bool if a node is a manager, if ManagerInfo != nil
@@ -56,4 +60,14 @@ func (nm NodeMetrics) IsLeader() string {
 		return "false"
 	}
 	return strconv.FormatBool(nm.ManagerInfo.Leader)
+}
+
+type SwarmMetrics struct {
+	Container ContainerMetrics
+	Resources resources
+}
+type ContainerMetrics struct {
+	Running int
+	Paused  int
+	Stopped int
 }

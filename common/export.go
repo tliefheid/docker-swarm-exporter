@@ -26,7 +26,7 @@ func ExportNodeMetrics(metrics []model.NodeMetrics) {
 		nodeInfo.WithLabelValues(
 			m.ID,
 			m.Host,
-			m.Role,
+			string(m.Role),
 			m.Os,
 			m.Architecture,
 			m.EngineVersion,

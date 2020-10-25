@@ -53,9 +53,13 @@ var (
 )
 
 func collectMetrics() {
-	collectDockerServices()
-	collectDockerNode()
-	collectDockerSwarm()
+	controller.UpdateServiceMetrics()
+	controller.UpdateNodeMetrics()
+	controller.UpdateSwarmMetrics()
+
+	// collectDockerServices() √
+	// collectDockerNode() √
+	// collectDockerSwarm() √
 	collectDockerExtra()
 	// customMetric2.Inc()
 }

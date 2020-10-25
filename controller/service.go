@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/docker/docker/api/types"
+	"github.com/docker/docker/client"
 	"github.com/toml-dev/docker-swarm-exporter/common"
 	"github.com/toml-dev/docker-swarm-exporter/model"
 )
@@ -16,8 +17,9 @@ func UpdateServiceMetrics() {
 	// collect metrics √
 	// fill struct √
 	// send struct to export √
-
-	cli := common.GetCLI()
+	// services := common.GetServiceList
+	// clien
+	cli, err := client.NewEnvClient()
 	services, err := cli.ServiceList(context.Background(), types.ServiceListOptions{})
 	if err != nil {
 		panic(err)
@@ -55,8 +57,6 @@ func UpdateServiceMetrics() {
 
 		serviceArr = append(serviceArr, sm)
 	}
-
-	cli.Close()
 
 	common.ExportServiceMetrics(serviceArr)
 }
