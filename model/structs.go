@@ -2,6 +2,8 @@ package model
 
 import (
 	"strconv"
+	"strings"
+	"unicode"
 
 	"github.com/docker/docker/api/types/swarm"
 )
@@ -69,6 +71,23 @@ type SwarmMetrics struct {
 	Memory    int64
 	Images    int
 }
+
+func (sm SwarmMetrics) GetSanitizedID() string {
+	id := strings.Map(sanitizeRune, sm.ID)
+	return id
+}
+
+// copied from: https://github.com/census-instrumentation/opencensus-go/blob/master/internal/sanitize.go
+// unable to reuse to to restrictions on 'internal' packages
+func sanitizeRune(r rune) rune {
+	if unicode.IsLetter(r) || unicode.IsDigit(r) {
+		return r
+	}
+	// Everything else turns into an underscore
+	return '_'
+}
+
+// ContainerMetrics holds the counts for serveral container states
 type ContainerMetrics struct {
 	Running int
 	Paused  int
