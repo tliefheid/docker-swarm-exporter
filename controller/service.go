@@ -14,11 +14,11 @@ func UpdateServiceMetrics() {
 	services := common.GetServiceList()
 
 	var serviceArr []model.ServiceMetrics
-	_serviceCount := len(services)
-	fmt.Printf("found '%d' services\n", _serviceCount)
+	// _serviceCount := len(services)
+	// fmt.Printf("\nfound '%d' services\n", _serviceCount)
 	for _, s := range services {
-		serviceName := s.Spec.Annotations.Name
-		fmt.Printf("%s", serviceName)
+		// serviceName := s.Spec.Annotations.Name
+		// fmt.Printf("%s", serviceName)
 
 		actualServiceMode := s.Spec.Mode
 		replicas := float64(-1)
@@ -42,7 +42,7 @@ func UpdateServiceMetrics() {
 		sm.Reservation.NanoCPUs = s.Spec.TaskTemplate.Resources.Reservations.NanoCPUs
 		sm.Reservation.MemoryBytes = s.Spec.TaskTemplate.Resources.Reservations.MemoryBytes
 
-		fmt.Printf("%#v\n", sm)
+		// fmt.Printf("%#v\n", sm)
 
 		serviceArr = append(serviceArr, sm)
 	}
