@@ -62,6 +62,7 @@ func (nm NodeMetrics) IsLeader() string {
 	return strconv.FormatBool(nm.ManagerInfo.Leader)
 }
 
+// SwarmMetrics contains generic swarm metrics
 type SwarmMetrics struct {
 	ID        string
 	Container ContainerMetrics
@@ -69,6 +70,7 @@ type SwarmMetrics struct {
 	Memory    int64
 	Images    int
 }
+
 type ContainerMetrics struct {
 	Running int
 	Paused  int
