@@ -29,7 +29,7 @@ const (
 	prefixMetric       = ""
 	prefixSwarmCluster = "swarm_cluster_"
 	prefixSwarmNode    = "swarm_node_"
-	prefixServiceSpec  = "service_spec_"
+	prefixServiceSpec  = "swarm_service_spec_"
 
 	info = "info"
 

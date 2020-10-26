@@ -14,6 +14,7 @@ func UpdateSwarmMetrics() {
 	fmt.Printf("INFO\n%#v\n", info)
 
 	var sm = model.SwarmMetrics{
+		ID: info.ID,
 		// Container: cm,
 		Container: model.ContainerMetrics{
 			Running: info.ContainersRunning,

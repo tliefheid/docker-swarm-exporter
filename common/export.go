@@ -6,7 +6,7 @@ import (
 
 // ExportSwarmClusterInfo set gauges regarding swarm cluster information
 func ExportSwarmClusterInfo(m model.SwarmMetrics) {
-	swarmClusterInfo.WithLabelValues(m.ID).Set(1)
+	swarmClusterInfo.WithLabelValues(m.GetSanitizedID()).Set(1)
 	swarmClusterInfoCPU.Set(float64(m.NCPU))
 	swarmClusterInfoMem.Set(float64(m.Memory))
 	swarmClusterInfoImages.Set(float64(m.Images))
