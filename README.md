@@ -8,3 +8,10 @@ export useful metrics regarding docker swarm and docker services
 available metrics:
 
 - TODO
+
+## TODO
+
+- implement logging framework
+- add tests
+- update documentation
+- add configuration/starting options
