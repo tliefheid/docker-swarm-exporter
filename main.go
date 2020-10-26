@@ -7,6 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/toml-dev/docker-swarm-exporter/controller"
 )
 
@@ -215,9 +216,6 @@ func collectDockerServices() {
 	// }
 
 }
-func toNormalCPU(nanoCPU int64) float64 {
-	return float64(nanoCPU) / 1e+9
-}
 
 func httpWrapper(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -258,7 +256,7 @@ func main() {
 
 	// customMetric1.Inc()
 	// http.Handle("/metrics", promhttp.Handler())
-	// http.Handle("/metrics", httpWrapper(promhttp.Handler()))
-	// http.ListenAndServe(":2112", nil)
+	http.Handle("/metrics", httpWrapper(promhttp.Handler()))
+	http.ListenAndServe(":2112", nil)
 
 }
