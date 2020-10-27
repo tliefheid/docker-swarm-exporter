@@ -43,11 +43,3 @@ func GetSwarmInfo() types.Info {
 	cli.Close()
 	return info
 }
-
-// func (c cliWrapper) getInfo() types.Info {
-// 	info, err := c.Info(context.Background())
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	return info
-// }
