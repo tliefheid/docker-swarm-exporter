@@ -1,15 +1,13 @@
 package controller
 
 import (
-	"fmt"
-
 	"github.com/toml-dev/docker-swarm-exporter/common"
 	"github.com/toml-dev/docker-swarm-exporter/model"
 )
 
 // UpdateServiceMetrics gathers service metrics and expose them to prometheus
 func UpdateServiceMetrics() {
-	fmt.Println("Update Service Metrics")
+	// fmt.Println("Update Service Metrics")
 
 	services := common.GetServiceList()
 
