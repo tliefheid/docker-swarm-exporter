@@ -8,12 +8,12 @@ import (
 	"github.com/docker/docker/api/types/swarm"
 )
 
-type resources struct {
+type Resources struct {
 	NanoCPUs    int64
 	MemoryBytes int64
 }
 
-func (r resources) ToNormalCPU() float64 {
+func (r Resources) ToNormalCPU() float64 {
 	return float64(r.NanoCPUs) / 1e+9
 }
 
@@ -22,8 +22,8 @@ type ServiceMetrics struct {
 	Name        string
 	ServiceMode string
 	Container   string
-	Limits      resources
-	Reservation resources
+	Limits      Resources
+	Reservation Resources
 	TimeCreated int64
 	TimeUpdated int64
 	Replicas    float64
@@ -39,7 +39,7 @@ type NodeMetrics struct {
 	Availability  string
 	EngineVersion string
 	NodeStatus    string
-	Resources     resources
+	Resources     Resources
 	ManagerInfo   managerInfo
 }
 

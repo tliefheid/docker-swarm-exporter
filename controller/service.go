@@ -34,11 +34,19 @@ func UpdateServiceMetrics() {
 			TimeCreated: s.Meta.CreatedAt.Unix(),
 			TimeUpdated: s.Meta.UpdatedAt.Unix(),
 			Replicas:    replicas,
+			Limits: model.Resources{
+				NanoCPUs:    s.Spec.TaskTemplate.Resources.Limits.NanoCPUs,
+				MemoryBytes: s.Spec.TaskTemplate.Resources.Limits.MemoryBytes,
+			},
+			Reservation: model.Resources{
+				NanoCPUs:    s.Spec.TaskTemplate.Resources.Reservations.NanoCPUs,
+				MemoryBytes: s.Spec.TaskTemplate.Resources.Reservations.MemoryBytes,
+			},
 		}
-		sm.Limits.NanoCPUs = s.Spec.TaskTemplate.Resources.Limits.NanoCPUs
-		sm.Limits.MemoryBytes = s.Spec.TaskTemplate.Resources.Limits.MemoryBytes
-		sm.Reservation.NanoCPUs = s.Spec.TaskTemplate.Resources.Reservations.NanoCPUs
-		sm.Reservation.MemoryBytes = s.Spec.TaskTemplate.Resources.Reservations.MemoryBytes
+		// sm.Limits.NanoCPUs = s.Spec.TaskTemplate.Resources.Limits.NanoCPUs
+		// sm.Limits.MemoryBytes = s.Spec.TaskTemplate.Resources.Limits.MemoryBytes
+		// sm.Reservation.NanoCPUs = s.Spec.TaskTemplate.Resources.Reservations.NanoCPUs
+		// sm.Reservation.MemoryBytes = s.Spec.TaskTemplate.Resources.Reservations.MemoryBytes
 
 		// fmt.Printf("%#v\n", sm)
 
