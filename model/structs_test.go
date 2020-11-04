@@ -17,7 +17,7 @@ func TestToNormalCPU(t *testing.T) {
 		{2000000000, 2},
 	}
 	for _, test := range tests {
-		r := resources{NanoCPUs: test.input}
+		r := Resources{NanoCPUs: test.input}
 		actual := r.ToNormalCPU()
 		if actual != test.want {
 			t.Errorf("Got %f, expected: %f", actual, test.want)
